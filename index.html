@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pentru soția mea</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a0533 0%, #2d1b4e 50%, #1a0533 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .section {
+            display: none;
+            min-height: 100vh;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section.active {
+            display: flex !important;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Landing Page */
+        .landing-section {
+            text-align: center;
+            background: url('poze/image00001.jpeg') center/cover no-repeat;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .landing-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(20, 10, 40, 0.85) 0%, rgba(45, 27, 78, 0.85) 100%);
+            z-index: 1;
+        }
+
+        .landing-section .landing-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .landing-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .landing-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3em;
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
+        }
+
+        .landing-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.3em;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .love-btn {
+            background: linear-gradient(45deg, #ff1493, #ff69b4);
+            color: white;
+            border: none;
+            padding: 20px 60px;
+            font-size: 1.5em;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(255, 20, 147, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+        .love-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 60px rgba(255, 20, 147, 0.7);
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .please-text {
+            display: none;
+            font-size: 2.5em;
+            color: #ff1493;
+            font-weight: 700;
+            animation: shake 0.5s infinite;
+            margin-top: 30px;
+        }
+
+        .please-text.show {
+            display: block;
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-10px);
+            }
+
+            75% {
+                transform: translateX(10px);
+            }
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            background: url('poze/image00002.jpeg') center/cover no-repeat;
+            position: relative;
+        }
+
+        .timeline-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(20, 10, 40, 0.92) 0%, rgba(40, 15, 60, 0.92) 100%);
+            z-index: 1;
+        }
+
+        .timeline-section .timeline-title,
+        .timeline-section .timeline,
+        .timeline-section .continue-btn {
+            position: relative;
+            z-index: 10;
+        }
+
+        .timeline-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3em;
+            color: #ff69b4;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .timeline {
+            max-width: 700px;
+            width: 100%;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #ff69b4, #ff1493);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            text-align: right;
+            margin-right: 60px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            text-align: left;
+            margin-left: 60px;
+        }
+
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: #ff1493;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px rgba(255, 20, 147, 0.8);
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 105, 180, 0.3);
+        }
+
+        .timeline-date {
+            color: #ff69b4;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .timeline-text {
+            color: #fff;
+            font-size: 1em;
+            line-height: 1.7;
+        }
+
+        /* Letter Section */
+        .letter-section {
+            background: url('poze/image00003.jpeg') center/cover no-repeat;
+            position: relative;
+        }
+
+        .letter-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(20, 10, 40, 0.92) 0%, rgba(40, 15, 60, 0.92) 100%);
+            z-index: 1;
+        }
+
+        .letter-section .letter-title,
+        .letter-section .letter-box,
+        .letter-section .continue-btn {
+            position: relative;
+            z-index: 10;
+        }
+
+        .letter-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3em;
+            color: #ff69b4;
+            margin-bottom: 40px;
+        }
+
+        .letter-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .letter-content {
+            color: #333;
+            font-size: 1.1em;
+            line-height: 2;
+            text-align: left;
+        }
+
+        .letter-content p {
+            margin-bottom: 20px;
+        }
+
+        .letter-signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2em;
+            color: #ff1493;
+            margin-top: 30px;
+            text-align: right;
+        }
+
+        /* Quiz Section */
+        .quiz-section {
+            background: url('poze/image00004.jpeg') center/cover no-repeat;
+            position: relative;
+        }
+
+        .quiz-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(20, 10, 40, 0.92) 0%, rgba(60, 20, 50, 0.92) 100%);
+            z-index: 1;
+        }
+
+        .quiz-section .quiz-title,
+        .quiz-section .quiz-container,
+        .quiz-section .quiz-result,
+        .quiz-section .continue-btn {
+            position: relative;
+            z-index: 10;
+        }
+
+        .quiz-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8em;
+            color: #ff69b4;
+            margin-bottom: 40px;
+        }
+
+        .quiz-container {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .quiz-question {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 2px solid rgba(255, 105, 180, 0.4);
+        }
+
+        .quiz-question h3 {
+            color: #fff;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .quiz-option {
+            background: rgba(255, 255, 255, 0.25);
+            border: 2px solid rgba(255, 105, 180, 0.5);
+            padding: 15px;
+            border-radius: 15px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .quiz-option:hover {
+            background: rgba(255, 105, 180, 0.4);
+            border-color: #ff1493;
+            transform: scale(1.02);
+        }
+
+        .quiz-option.selected {
+            background: linear-gradient(45deg, #ff1493, #ff69b4);
+            border-color: #ff1493;
+            font-weight: 700;
+        }
+
+        .quiz-result {
+            text-align: center;
+            margin-top: 30px;
+            display: none;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 105, 180, 0.5);
+        }
+
+        .quiz-result.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .quiz-result h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2em;
+            color: #ff69b4;
+            margin-bottom: 15px;
+        }
+
+        .quiz-result p {
+            color: #fff;
+            font-size: 1.2em;
+        }
+
+        .submit-quiz-btn {
+            background: linear-gradient(45deg, #ff1493, #ff69b4);
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.2em;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.4);
+        }
+
+        .submit-quiz-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Music & Counter Section */
+        .music-section {
+            background: url('poze/image00005.jpeg') center/cover no-repeat;
+            position: relative;
+        }
+
+        .music-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(20, 10, 40, 0.92) 0%, rgba(40, 15, 60, 0.92) 100%);
+            z-index: 1;
+        }
+
+        .music-section .music-title,
+        .music-section .music-player,
+        .music-section .counter-section,
+        .music-section .continue-btn {
+            position: relative;
+            z-index: 10;
+        }
+
+        .music-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3em;
+            color: #ff69b4;
+            margin-bottom: 30px;
+        }
+
+        .music-player {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 30px;
+            border: 2px solid rgba(255, 105, 180, 0.3);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .music-note {
+            font-size: 4em;
+            margin-bottom: 20px;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .music-text {
+            color: #fff;
+            font-size: 1.3em;
+            margin-bottom: 30px;
+        }
+
+        .counter-section {
+            margin-top: 50px;
+        }
+
+        .counter-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5em;
+            color: #ff69b4;
+            margin-bottom: 30px;
+        }
+
+        .counter-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px 50px;
+            border-radius: 25px;
+            border: 2px solid rgba(255, 105, 180, 0.3);
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .counter-item {
+            text-align: center;
+        }
+
+        .counter-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #ff1493;
+        }
+
+        .counter-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9em;
+            text-transform: uppercase;
+        }
+
+        /* Secret Page - Invitation */
+        .secret-section {
+            background: url('poze/image00006.jpeg') center/cover no-repeat;
+            position: relative;
+        }
+
+        .secret-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(20, 10, 40, 0.92) 0%, rgba(40, 15, 60, 0.92) 100%);
+            z-index: 1;
+        }
+
+        .secret-section .secret-title,
+        .secret-section .password-form,
+        .secret-section .secret-content,
+        .secret-section .invitation-box {
+            position: relative;
+            z-index: 10;
+        }
+
+        .secret-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5em;
+            color: #ff69b4;
+            margin-bottom: 30px;
+        }
+
+        .password-form {
+            max-width: 400px;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 18px 25px;
+            font-size: 1.2em;
+            border: 3px solid rgba(255, 105, 180, 0.5);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .password-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .password-input:focus {
+            outline: none;
+            border-color: #ff1493;
+        }
+
+        .unlock-btn {
+            background: linear-gradient(45deg, #ff1493, #ff69b4);
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.2em;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .unlock-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .secret-content {
+            display: none;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .secret-content.show {
+            display: block;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .secret-message {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5em;
+            color: #ff69b4;
+            margin-bottom: 30px;
+        }
+
+        .invitation-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .invitation-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2em;
+            color: #ff1493;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .invitation-item {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            padding: 18px;
+            background: #fce4ec;
+            border-radius: 15px;
+            border: 2px solid #ff69b4;
+        }
+
+        .invitation-icon {
+            font-size: 2em;
+            margin-right: 15px;
+        }
+
+        .invitation-label {
+            color: #ff69b4;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .invitation-value {
+            color: #333;
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .invitation-note {
+            text-align: center;
+            margin-top: 25px;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            background: url('poze/image00007.jpeg') center/cover no-repeat;
+            position: relative;
+        }
+
+        .gallery-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(20, 10, 40, 0.92) 0%, rgba(40, 15, 60, 0.92) 100%);
+            z-index: 1;
+        }
+
+        .gallery-section .gallery-title,
+        .gallery-section .photo-grid,
+        .gallery-section p,
+        .gallery-section .continue-btn {
+            position: relative;
+            z-index: 10;
+        }
+
+        .gallery-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3em;
+            color: #ff69b4;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .photo-frame {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            border: 4px solid rgba(255, 105, 180, 0.5);
+            transition: transform 0.3s ease;
+            background: #fff;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .photo-frame:hover {
+            transform: scale(1.05);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        /* Final Section */
+        .final-section {
+            background: url('poze/image00008.jpeg') center/cover no-repeat;
+            position: relative;
+        }
+
+        .final-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(20, 10, 40, 0.92) 0%, rgba(60, 20, 50, 0.92) 100%);
+            z-index: 1;
+        }
+
+        .final-section .final-title,
+        .final-section .final-message-box {
+            position: relative;
+            z-index: 10;
+        }
+
+        .final-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3em;
+            color: #ff69b4;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .final-message-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 30px;
+            max-width: 600px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .final-message-box p {
+            color: #333;
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .final-signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2em;
+            color: #ff1493;
+            margin-top: 20px;
+        }
+
+        .error-message {
+            color: #ff4444;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* Navigation */
+        .nav-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            background: rgba(255, 105, 180, 0.8);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #ff1493;
+            transform: scale(1.05);
+        }
+
+        /* Floating Hearts */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 20px;
+            animation: floatUp 8s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.6;
+            }
+
+            90% {
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(-100px) translateX(50px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Continue Button */
+        .continue-btn {
+            background: linear-gradient(45deg, #ff1493, #ff69b4);
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.2em;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 40px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.4);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .continue-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .continue-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Responsive - Mobile First */
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+
+            .section {
+                padding: 20px 15px;
+                min-height: 100vh;
+            }
+
+            .landing-title {
+                font-size: 1.8em !important;
+                padding: 0 10px;
+            }
+
+            .landing-text {
+                font-size: 1em !important;
+                padding: 0 10px;
+            }
+
+            .love-btn {
+                padding: 15px 40px;
+                font-size: 1.2em;
+                width: 90%;
+                max-width: 300px;
+            }
+
+            .please-text {
+                font-size: 1.5em !important;
+                padding: 0 10px;
+            }
+
+            .timeline-title {
+                font-size: 2em !important;
+            }
+
+            .timeline::before {
+                left: 15px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(odd) {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-left: 35px;
+                margin-bottom: 25px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content {
+                text-align: left;
+                margin-right: 0;
+            }
+
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 0;
+            }
+
+            .timeline-dot {
+                left: 0;
+                width: 15px;
+                height: 15px;
+            }
+
+            .timeline-content {
+                width: 100%;
+                padding: 15px;
+            }
+
+            .timeline-date {
+                font-size: 0.8em;
+            }
+
+            .timeline-text {
+                font-size: 0.9em;
+            }
+
+            .letter-title {
+                font-size: 2em !important;
+            }
+
+            .letter-box {
+                padding: 20px;
+            }
+
+            .letter-content {
+                font-size: 1em !important;
+                line-height: 1.7;
+            }
+
+            .letter-signature {
+                font-size: 1.5em !important;
+            }
+
+            .quiz-title {
+                font-size: 1.8em !important;
+            }
+
+            .quiz-question {
+                padding: 15px;
+            }
+
+            .quiz-question h3 {
+                font-size: 1em !important;
+            }
+
+            .quiz-options {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .quiz-option {
+                padding: 12px;
+                font-size: 0.9em;
+            }
+
+            .submit-quiz-btn {
+                padding: 15px 35px;
+                font-size: 1em;
+            }
+
+            .music-title {
+                font-size: 2em !important;
+            }
+
+            .music-player {
+                padding: 25px 15px;
+            }
+
+            .counter-box {
+                gap: 15px;
+                padding: 20px;
+            }
+
+            .counter-number {
+                font-size: 1.8em !important;
+            }
+
+            .counter-label {
+                font-size: 0.75em;
+            }
+
+            .secret-title {
+                font-size: 1.8em !important;
+            }
+
+            .password-input {
+                padding: 15px 20px;
+                font-size: 1em;
+            }
+
+            .unlock-btn {
+                padding: 15px 35px;
+                font-size: 1em;
+            }
+
+            .invitation-box {
+                padding: 20px;
+            }
+
+            .invitation-title {
+                font-size: 1.5em !important;
+            }
+
+            .invitation-item {
+                padding: 12px;
+                margin: 12px 0;
+            }
+
+            .invitation-icon {
+                font-size: 1.5em;
+            }
+
+            .invitation-label {
+                font-size: 0.75em;
+            }
+
+            .invitation-value {
+                font-size: 0.95em;
+            }
+
+            .gallery-title {
+                font-size: 2em !important;
+            }
+
+            .photo-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .photo-frame img {
+                height: 180px;
+            }
+
+            .continue-btn {
+                padding: 18px 40px;
+                font-size: 1.1em;
+                width: 90%;
+                max-width: 280px;
+                margin-top: 30px;
+                cursor: pointer;
+                position: relative;
+                z-index: 1000;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="floating-hearts" id="heartsContainer"></div>
+
+    <!-- Section 1: Landing Page -->
+    <div class="section landing-section active" id="landingSection">
+        <div class="landing-content">
+            <h1 class="landing-title">Pentru soția mea,<br>o floare parfumată și frumoasă</h1>
+            <p class="landing-text">
+                De aici începe povestea noastră...<br><br>
+                Dragă mea soție, femeia care mi-a schimbat viața fără să își dea seama,
+                cea care mi-a adus liniște când aveam furtuni în suflet și care mi-a arătat
+                că iubirea adevărată nu e doar un cuvânt, ci un sentiment care se trăiește
+                în fiecare zi.<br><br>
+                Îți fac acest mic colț de lume doar pentru tine, pentru că meriți mai mult
+                decât flori și mesaje clasice. Meriți ceva făcut din inimă.
+            </p>
+            <button class="love-btn" id="loveBtn" onclick="goToStory()">
+                Apasă aici dacă mă iubești ❤️
+            </button>
+            <div class="please-text" id="pleaseText">
+                Apasă pliz pliz pliz ❤️❤️❤️
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 2: Povestea Noastră -->
+    <div class="section timeline-section" id="timelineSection">
+        <h1 class="timeline-title">Povestea Noastră</h1>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Prima noastră ieșire</div>
+                    <div class="timeline-text">
+                        La Kik, eu îndrăgostit lulea din prima secundă în care te-am văzut,
+                        fără să știu că fata aia frumoasă avea să-mi devină soție.
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Încercări și vrăjeli</div>
+                    <div class="timeline-text">
+                        Au urmat încercări, vrăjeli, mesaje peste mesaje, mesaje la notițe =))))
+                        Strategii demne de Oscar doar ca să-ți atrag atenția...
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Ziua victoriei</div>
+                    <div class="timeline-text">
+                        Până când în sfârșit am reușit să-ți cuceresc inima și să devin omul tău.
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">CIURICĂ</div>
+                    <div class="timeline-text">
+                        De acolo, Ciurică al tău a încercat zi de zi să te facă cea mai fericită
+                        prințesă de pe pământ pentru că un lucru e clar și adevărat:
+                        <strong>SOȚIA FERICITĂ = HAPPY LIFE</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">Azi</div>
+                    <div class="timeline-text">
+                        Și de atunci povestea noastră a început atât de frumos... cu emoții,
+                        cu probleme, cu certuri, cu împăcări, dar ce contează este că am rămas
+                        uniți, că indiferent de obstacole ne-am iertat, am învățat unul de la
+                        altul și ne iubim mai tare ca niciodată! ❤️
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="continue-btn" onclick="goToLetter()">Continuă</button>
+    </div>
+
+    <!-- Section 3: Scrisoare din suflet -->
+    <div class="section letter-section" id="letterSection">
+        <h1 class="letter-title">Scrisoare din suflet</h1>
+        <div class="letter-box">
+            <div class="letter-content">
+                <p>
+                    Nu știu exact în ce moment ai devenit persoana mea preferată din lume,
+                    dar știu sigur că acum nu-mi mai imaginez viața fără tine în ea.
+                </p>
+                <p>
+                    Îți mulțumesc pentru răbdare, pentru felul în care mă înțelegi chiar și
+                    când nu spun nimic, pentru că mă susții, pentru că mă iubești exact așa
+                    cum sunt.
+                </p>
+                <p>
+                    Îți mulțumesc pentru fiecare zâmbet, pentru fiecare îmbrățișare, pentru
+                    fiecare moment în care mi-ai fost aproape când poate nu meritam pe deplin.
+                </p>
+                <p>
+                    Nu suntem perfecți, dar suntem perfecți unul pentru celălalt și asta
+                    este tot ce contează.
+                </p>
+                <p>
+                    Promit să fiu în continuare omul tău, sprijinul tău, liniștea ta și cel
+                    care te face să râzi chiar și în cele mai grele zile.
+                </p>
+                <p>
+                    Te iubesc mai mult decât pot scrie, mai mult decât pot spune, mai mult
+                    decât orice cuvânt ar putea exprima.
+                </p>
+            </div>
+            <div class="letter-signature">
+                Al tău, pentru totdeauna,<br>
+                CIURICĂ ❤️
+            </div>
+        </div>
+        <button class="continue-btn" onclick="goToQuiz()">Continuă</button>
+    </div>
+
+    <!-- Section 4: Mini Joc -->
+    <div class="section quiz-section" id="quizSection">
+        <h1 class="quiz-title">Cât de bine mă cunoști?</h1>
+        <div class="quiz-container">
+            <div class="quiz-question">
+                <h3>1. Unde ne-am văzut prima dată?</h3>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(this, 0)">Când mergeam spre Kik</div>
+                    <div class="quiz-option selected" onclick="selectOption(this, 1)">La Liceu</div>
+                    <div class="quiz-option" onclick="selectOption(this, 0)">Pe stradă</div>
+                    <div class="quiz-option" onclick="selectOption(this, 0)">La parc</div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>2. Care este mâncarea mea preferată?</h3>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(this, 0)">Burger</div>
+                    <div class="quiz-option selected" onclick="selectOption(this, 1)">Pui cu sos de soja crispy și orez
+                        cu legume</div>
+                    <div class="quiz-option" onclick="selectOption(this, 0)">Pizza</div>
+                    <div class="quiz-option" onclick="selectOption(this, 0)">Paste</div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>3. Ce spun mereu când sunt supărat?</h3>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(this, 0)">Nu zic nimic</div>
+                    <div class="quiz-option" onclick="selectOption(this, 0)">Sunt supărat</div>
+                    <div class="quiz-option" onclick="selectOption(this, 0)">Pleacă</div>
+                    <div class="quiz-option selected" onclick="selectOption(this, 1)">Îți spun ție când sunt supărat
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>4. Care este visul nostru împreună?</h3>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(this, 0)">O casă</div>
+                    <div class="quiz-option" onclick="selectOption(this, 0)">O mașină</div>
+                    <div class="quiz-option selected" onclick="selectOption(this, 1)">Să intrăm amândoi la facultate și
+                        să ne mutăm împreună la Iași</div>
+                    <div class="quiz-option" onclick="selectOption(this, 0)">O vacanță</div>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>5. Unde am vorbit prima dată ore întregi?</h3>
+                <div class="quiz-options">
+                    <div class="quiz-option selected" onclick="selectOption(this, 1)">in drum spre Kik</div>
+                    <div class="quiz-option" onclick="selectOption(this, 0)">Pe stradă</div>
+                    <div class="quiz-option" onclick="selectOption(this, 0)">La telefon</div>
+                    <div class="quiz-option" onclick="selectOption(this, 0)">La școală</div>
+                </div>
+            </div>
+
+            <div class="quiz-result" id="quizResult">
+                <h3>Bravoo! ❤️</h3>
+                <p>Premiul tău este o îmbrățișare + o surpriză!</p>
+            </div>
+
+            <button class="submit-quiz-btn" onclick="submitQuiz()">Verifică răspunsurile</button>
+        </div>
+        <button class="continue-btn" onclick="goToMusic()">Continuă</button>
+    </div>
+
+    <!-- Section 5: Muzică și Contor -->
+    <div class="section music-section" id="musicSection">
+        <h1 class="music-title">Melodia Noastră 🎵</h1>
+        <div class="music-player">
+            <div class="music-note">🎵</div>
+            <p class="music-text">Ascultă melodia noastră...</p>
+            <audio id="ourSong" autoplay loop>
+                <source src="muzica.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <div class="counter-section">
+            <h2 class="counter-title">Suntem împreună de:</h2>
+            <div class="counter-box">
+                <div class="counter-item">
+                    <div class="counter-number" id="daysCounter">0</div>
+                    <div class="counter-label">Zile</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" id="hoursCounter">0</div>
+                    <div class="counter-label">Ore</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" id="minutesCounter">0</div>
+                    <div class="counter-label">Minute</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number" id="secondsCounter">0</div>
+                    <div class="counter-label">Secunde</div>
+                </div>
+            </div>
+        </div>
+
+        <button class="continue-btn" onclick="goToGallery()">Continuă</button>
+    </div>
+
+    <!-- Section 6: Photo Gallery -->
+    <div class="section gallery-section" id="gallerySection">
+        <h1 class="gallery-title">Amintiri Noastre 📸</h1>
+        <div class="photo-grid">
+            <div class="photo-frame">
+                <img src="poze/image00007.jpeg" alt="Memorie 1">
+            </div>
+            <div class="photo-frame">
+                <img src="poze/image00008.jpeg" alt="Memorie 2">
+            </div>
+        </div>
+        <p style="color: #fff; margin-top: 30px; font-size: 1.2em; position: relative; z-index: 10;">
+            Fiecare moment cu tine e o amintire prețioasă! ❤️
+        </p>
+        <button class="continue-btn" onclick="goToSecret()">Continuă</button>
+    </div>
+
+    <!-- Section 6: Pagină Secretă -->
+    <div class="section secret-section" id="secretSection">
+        <h1 class="secret-title">Pagină Secretă 🔒</h1>
+
+        <div class="password-form" id="passwordForm">
+            <input type="password" class="password-input" id="passwordInput" placeholder="Introdu parola (porecla mea)">
+            <button class="unlock-btn" onclick="checkPassword()">Accesează</button>
+            <p class="error-message" id="errorMessage">Parola incorectă! Încearcă din nou.</p>
+        </div>
+
+        <div class="secret-content" id="secretContent">
+            <h2 class="secret-message">Invitație Specială pentru tine ❤️</h2>
+
+            <div class="invitation-box">
+                <div class="invitation-item">
+                    <span class="invitation-icon">📅</span>
+                    <div>
+                        <div class="invitation-label">Data</div>
+                        <div class="invitation-value">24 Februarie 2026</div>
+                    </div>
+                </div>
+
+                <div class="invitation-item">
+                    <span class="invitation-icon">🕐</span>
+                    <div>
+                        <div class="invitation-label">Ora</div>
+                        <div class="invitation-value">16:30</div>
+                    </div>
+                </div>
+
+                <div class="invitation-item">
+                    <span class="invitation-icon">📍</span>
+                    <div>
+                        <div class="invitation-label">Locația</div>
+                        <div class="invitation-value">Surpriză! Aflii cand ajung la tine ! ❤️</div>
+                    </div>
+                </div>
+
+                <div class="invitation-item">
+                    <span class="invitation-icon">👗</span>
+                    <div>
+                        <div class="invitation-label">Îmbrăcăminte</div>
+                        <div class="invitation-value">Frumos, ca tine! 💕</div>
+                        <div class="invitation-label" style="margin-top: 10px;">Gros</div>
+                        <div class="invitation-value">Oricum ești superbă! ❤️</div>
+                    </div>
+                </div>
+
+                <div class="invitation-item">
+                    <span class="invitation-icon">🎁</span>
+                    <div>
+                        <div class="invitation-label">Surpriză</div>
+                        <div class="invitation-value">Pregătește-te pentru ceva special!</div>
+                    </div>
+                </div>
+
+                <p class="invitation-note">
+                    Abia aștept să te văd, my love! ❤️<br>
+                    Cu drag,
+                    CIURICĂ 💕
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Landing page timer
+        let timerStarted = false;
+        let clickTimer;
+
+        function startTimer() {
+            if (!timerStarted) {
+                timerStarted = true;
+                setTimeout(() => {
+                    document.getElementById('pleaseText').classList.add('show');
+                }, 3000);
+            }
+        }
+
+        document.getElementById('loveBtn').addEventListener('click', startTimer);
+
+        // Navigation functions
+        function hideAllSections() {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        }
+
+        function goToStory() {
+            hideAllSections();
+            document.getElementById('timelineSection').classList.add('active');
+            startMusic();
+        }
+
+        function goToLetter() {
+            hideAllSections();
+            document.getElementById('letterSection').classList.add('active');
+        }
+
+        function goToQuiz() {
+            hideAllSections();
+            document.getElementById('quizSection').classList.add('active');
+        }
+
+        function goToMusic() {
+            hideAllSections();
+            document.getElementById('musicSection').classList.add('active');
+            startMusic();
+            updateCounter();
+        }
+
+        function goToGallery() {
+            hideAllSections();
+            document.getElementById('gallerySection').classList.add('active');
+        }
+
+        function goToSecret() {
+            hideAllSections();
+            document.getElementById('secretSection').classList.add('active');
+        }
+
+        // Quiz functions
+        function selectOption(element, correct) {
+            const parent = element.parentElement;
+            parent.querySelectorAll('.quiz-option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+
+        function submitQuiz() {
+            document.getElementById('quizResult').classList.add('show');
+        }
+
+        // Music
+        function startMusic() {
+            const audio = document.getElementById('ourSong');
+            if (audio) {
+                audio.volume = 0.3;
+                audio.play().catch(e => console.log('Autoplay blocked'));
+            }
+        }
+
+        // Counter
+        function updateCounter() {
+            const startDate = new Date('2024-04-14');
+            const endDate = new Date('2026-02-24');
+
+            function update() {
+                const now = new Date();
+                const diff = now - startDate;
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const minutes = Math.floor(diff / (1000 * 60));
+                const seconds = Math.floor(diff / 1000);
+
+                document.getElementById('daysCounter').textContent = days;
+                document.getElementById('hoursCounter').textContent = hours;
+                document.getElementById('minutesCounter').textContent = minutes;
+                document.getElementById('secondsCounter').textContent = seconds;
+            }
+
+            update();
+            setInterval(update, 1000);
+        }
+
+        // Password check
+        function checkPassword() {
+            const input = document.getElementById('passwordInput').value.toLowerCase().trim();
+            if (input === 'ciuri') {
+                document.getElementById('passwordForm').style.display = 'none';
+                document.getElementById('secretContent').classList.add('show');
+                document.getElementById('errorMessage').classList.remove('show');
+            } else {
+                document.getElementById('errorMessage').classList.add('show');
+            }
+        }
+
+        // Floating hearts
+        function createHearts() {
+            const container = document.getElementById('heartsContainer');
+            const hearts = ['❤️', '💕', '💗', '💖', '💘', '💞'];
+
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (15 + Math.random() * 20) + 'px';
+                heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+                container.appendChild(heart);
+
+                setTimeout(() => heart.remove(), 10000);
+            }, 800);
+        }
+
+        createHearts();
+
+        // Start music on first click (for browsers that block autoplay)
+        document.body.addEventListener('click', function () {
+            const audio = document.getElementById('ourSong');
+            if (audio && audio.paused) {
+                audio.play().catch(e => { });
+            }
+        }, { once: true });
+    </script>
+</body>
+
+</html>
